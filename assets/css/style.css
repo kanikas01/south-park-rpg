@@ -14,3 +14,21 @@
 .col-12 { width: 100%   }
 
 /* END Create column system */
+
+.row {
+  display: flex;
+}
+
+.character {
+  width: 160px;
+  height: 120px;
+  border: 2px solid green;
+  display: block;
+  text-align: center;
+}
+
+img {
+  width: 120;
+  height: 80;
+  background-color: #000;
+}
