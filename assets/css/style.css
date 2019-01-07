@@ -49,6 +49,7 @@ h2 {
   width: 160px;
   height: 120px;
   border: 2px solid green;
+  background-color: aliceblue;
   display: block;
   text-align: center;
 }
@@ -60,7 +61,7 @@ h2 {
 img {
   width: 120;
   height: 80;
-  background-color: #000;
+  background-color: rgb(39, 47, 92);
 }
 
 button {
