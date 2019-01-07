@@ -15,8 +15,33 @@
 
 /* END Create column system */
 
+@font-face {
+  font-family: 'South Park';
+  src: url('fonts/southpark.woff2') format('woff2'),
+       url('fonts/southpark.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: 'South Park';
+  font-weight: normal;
+  font-style: normal;
+  background-image: url("../images/south-park-background-t-and-p.jpg");
+  background-size: cover;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
 .row {
   display: flex;
+  margin: 10px;
 }
 
 .character {
