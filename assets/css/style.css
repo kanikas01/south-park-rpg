@@ -34,15 +34,24 @@ body {
 
 h1 {
   font-size: 3rem;
+  color: darkorange;
 }
 
 h2 {
   font-size: 1.5rem;
 }
 
+.title-right {
+  text-align: center;
+}
+
 .row {
   display: flex;
   margin: 10px;
+}
+
+.characters {
+  display: flex;
 }
 
 .character {
