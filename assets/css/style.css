@@ -18,7 +18,8 @@
 @font-face {
   font-family: 'South Park';
   src: url('fonts/southpark.woff2') format('woff2'),
-       url('fonts/southpark.woff') format('woff');
+       url('fonts/southpark.woff') format('woff'),
+       url('southpark.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
