@@ -47,11 +47,12 @@ h2 {
 
 .row {
   display: flex;
-  margin: 10px;
+  margin-top: 7px;
 }
 
 .characters {
   display: flex;
+  margin-top: 5px;
 }
 
 .character {
@@ -71,6 +72,10 @@ img {
   width: 120;
   height: 80;
   background-color: rgb(39, 47, 92);
+}
+
+#your-character {
+  height: 130px;
 }
 
 button {
