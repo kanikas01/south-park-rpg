@@ -81,9 +81,10 @@ h2 {
 }
 
 img {
-  width: 100px;
-  height: 70px;
+  width: 120px;
+  height: 80px;
   background-color: rgb(39, 47, 92);
+  vertical-align: middle;
 }
 
 #your-character {
