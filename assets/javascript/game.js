@@ -6,6 +6,7 @@ var fightSectionDiv = $("#fight-section");
 var defenderDiv = $("#defender");
 var characterArray = [];
 var isHeroChosen = false;
+var myCharacter;
 
 // Declare character objects
 var lemmiwinks = { 
@@ -40,22 +41,26 @@ var towelie = {
   counterAttackPower: 888
 };
 
+// Add character objects to an array
 characterArray.push(lemmiwinks, mrKitty, pete, towelie);
 
+// Choose your character and reposition all players
 $(".character").click(function() {
-  var hero = '';
   var charName = ($(this).attr("value"));
   if (!isHeroChosen) {
     $(this).appendTo(yourCharacterDiv);
     characterArray.forEach(function(element) {
-      if (element.name == charName) {
-        hero = characterArray.splice(characterArray.indexOf(element), 1); 
+      if (element.name !== charName) {
+        element.pageElement.toggleClass("enemy-character");
+        element.pageElement.appendTo(enemiesAvailableDiv);
       }
-      // Else give them the enemies class and add them to the enemies list
-      
+      else {
+        myCharacter = element;
+      }
     });
+    isHeroChosen = true;
+    console.log(myCharacter);
   }
-  isHeroChosen = true;
-  hero = hero[0];
-  console.log(hero, characterArray.length);
 });
+
+// Choose defender
