@@ -25,6 +25,7 @@
 }
 
 body {
+  box-sizing: border-box;
   font-family: 'South Park';
   font-weight: normal;
   font-style: normal;
@@ -44,16 +45,16 @@ h2 {
 
 .title-right {
   text-align: center;
+  padding-top: 15px;
 }
 
 .row {
   display: flex;
-  margin-top: 7px;
+  margin-top: 5px;
 }
 
 .characters {
   display: flex;
-  margin-top: 5px;
 }
 
 .character {
@@ -85,6 +86,7 @@ img {
   height: 80px;
   background-color: rgb(39, 47, 92);
   vertical-align: middle;
+  margin-bottom: 3px;
 }
 
 #your-character {
