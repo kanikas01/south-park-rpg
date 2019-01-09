@@ -45,7 +45,6 @@ h2 {
 
 .title-right {
   text-align: center;
-  padding-top: 15px;
 }
 
 .row {
@@ -58,8 +57,8 @@ h2 {
 }
 
 .character {
-  width: 160px;
-  height: 120px;
+  width: 148px;
+  height: 111px;
   border: 2px solid green;
   background-color: aliceblue;
   display: block;
@@ -82,11 +81,11 @@ h2 {
 }
 
 img {
-  width: 120px;
-  height: 80px;
+  width: 112px;
+  height: 74px;
   background-color: rgb(39, 47, 92);
   vertical-align: middle;
-  margin-bottom: 3px;
+  margin-bottom: 2px;
 }
 
 #your-character {
