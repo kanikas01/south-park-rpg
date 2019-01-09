@@ -32,7 +32,8 @@ var pete = {
   counterAttackPower: 888
 };
 
-var towelie = { name: "Towelie",
+var towelie = { 
+  name: "Towelie",
   pageElement: $("#towelie"),
   healthPoints: 888,
   attackPower: 888,
