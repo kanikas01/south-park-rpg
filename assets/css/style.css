@@ -96,3 +96,7 @@ button {
   margin-bottom: 6px;
   /* border-radius: 1px; */
 }
+
+#reset {
+  display: none;
+}
