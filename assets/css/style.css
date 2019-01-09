@@ -67,6 +67,13 @@ h2 {
 
 .enemy-character {
   background-color: crimson;
+  border-color: black;
+}
+
+.defender {
+  background-color: black;
+  color: aliceblue;
+  border-color:green;
 }
 
 .character-name {
