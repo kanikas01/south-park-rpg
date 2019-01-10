@@ -93,7 +93,7 @@ $(document).ready(function () {
   });
 
   $('#attack-button').on('click', function () {
-    if(isHeroChosen && isEnemyChosen) {
+    if (isHeroChosen && isEnemyChosen) {
       currentEnemy.healthPoints -= myCharacter.attackPower;
       
       if (currentEnemy.healthPoints <= 0) {
@@ -104,23 +104,26 @@ $(document).ready(function () {
         isEnemyChosen = false;
         enemiesRemaining--;
         currentEnemy = '';
+        return;
       }
-      else if(myCharacter.healthPoints <= 0) {
-        battleProgressDiv.html(`You have been defeated!`);
+
+      $(currentEnemy.pageElement + " p").html(currentEnemy.healthPoints);
+      myCharacter.healthPoints -= currentEnemy.counterAttackPower;
+      $(myCharacter.pageElement + " p").html(myCharacter.healthPoints);
+
+      if (myCharacter.healthPoints <= 0) {
+        myCharacter.healthPoints = 0;
+        $(myCharacter.pageElement + " p").html(myCharacter.healthPoints);
+        battleProgressDiv.html('You have been defeated!');
         $("#attack").css("display", "none");
         $("#reset").css("display", "block");
       }
       else {
-        $(currentEnemy.pageElement + " p").html(currentEnemy.healthPoints);
-        myCharacter.healthPoints -= currentEnemy.counterAttackPower;
-        $(myCharacter.pageElement + " p").html(myCharacter.healthPoints);
-
-        battleProgressDiv.html(`You attacked ${currentEnemy.name} for ${myCharacter.attackPower} damage!<br>
-        ${currentEnemy.name} attacked you back for ${currentEnemy.counterAttackPower} damage!`);
-
-        myCharacter.attackPower += myCharacter.attackIncrease;
+        battleProgressDiv.html(`You attacked ${currentEnemy.name} for ${myCharacter.attackPower} damage!<br>${currentEnemy.name} attacked you back for ${currentEnemy.counterAttackPower} damage!`);
       }
-      
+
+      myCharacter.attackPower += myCharacter.attackIncrease;
+
       if (!enemiesRemaining) {
         battleProgressDiv.html(`You won! Game Over!`);
         // Hide attack button and show reset button
