@@ -99,7 +99,7 @@ $(document).ready(function () {
       if (currentEnemy.healthPoints <= 0) {
         currentEnemy.healthPoints = 0;
         $(currentEnemy.pageElement + " p").html(currentEnemy.healthPoints);
-        battleProgressDiv.html(`You defeated ${currentEnemy.name}!`);
+        battleProgressDiv.html(`You have defeated ${currentEnemy.name}!<br>You can choose to fight another enemy.`);
         $(currentEnemy.pageElement).detach();
         isEnemyChosen = false;
         enemiesRemaining--;
