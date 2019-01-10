@@ -4,6 +4,7 @@ var yourCharacterDiv = $("#your-character");
 var enemiesAvailableDiv = $("#enemies-available");
 var fightSectionDiv = $("#fight-section");
 var defenderDiv = $("#defender");
+var battleProgressDiv = $("#battle-progress p");
 var characterArray = [];
 var isHeroChosen = false;
 var isEnemyChosen = false;
@@ -14,7 +15,7 @@ var currentEnemy;
 // Declare character objects
 var lemmiwinks = { 
   name: "Lemmiwinks",
-  pageElement: $("#lemmiwinks"),
+  pageElement: "#lemmiwinks",
   healthPoints: 120,
   attackPower: 8,
   attackIncrease: 8,
@@ -23,7 +24,7 @@ var lemmiwinks = {
 
 var mrKitty = { 
   name: "Mr. Kitty",
-  pageElement: $("#mr-kitty"),
+  pageElement: "#mr-kitty",
   healthPoints: 100,
   attackPower: 5,
   attackIncrease: 5,
@@ -32,7 +33,7 @@ var mrKitty = {
 
 var pete = { 
   name: "Pete",
-  pageElement: $("#pete"),
+  pageElement: "#pete",
   healthPoints: 150,
   attackPower: 20,
   attackIncrease: 20,
@@ -41,7 +42,7 @@ var pete = {
 
 var towelie = { 
   name: "Towelie",
-  pageElement: $("#towelie"),
+  pageElement: "#towelie",
   healthPoints: 180,
   attackPower: 25,
   attackIncrease: 25,
@@ -60,8 +61,8 @@ $(document).ready(function () {
       $(this).appendTo(yourCharacterDiv);
       characterArray.forEach(function(element) {
         if (element.name !== charName) {
-          element.pageElement.toggleClass("enemy-character");
-          element.pageElement.appendTo(enemiesAvailableDiv);
+          $(element.pageElement).toggleClass("enemy-character");
+          $(element.pageElement).appendTo(enemiesAvailableDiv);
         }
         else {
           myCharacter = element;
@@ -90,27 +91,47 @@ $(document).ready(function () {
     }
   });
 
-  $('#defender').on('click', '.defender', function () {
-    location.reload();
-  });
-
   $('#attack-button').on('click', function () {
     if(isHeroChosen && isEnemyChosen) {
       currentEnemy.healthPoints -= myCharacter.attackPower;
       
-      myCharacter.healthPoints -= currentEnemy.counterAttackPower;
+      if (currentEnemy.healthPoints <= 0) {
+        currentEnemy.healthPoints = 0;
+        $(currentEnemy.pageElement + " p").html(currentEnemy.healthPoints);
+        battleProgressDiv.html(`You defeated ${currentEnemy.name}!`);
+        $(currentEnemy.pageElement).detach();
+        isEnemyChosen = false;
+        enemiesRemaining--;
+        currentEnemy = '';
+      }
+      else if(myCharacter.healthPoints <= 0) {
+        battleProgressDiv.html(`You have been defeated!`);
+        $("#attack").css("display", "none");
+        $("#reset").css("display", "block");
+      }
+      else {
+        $(currentEnemy.pageElement + " p").html(currentEnemy.healthPoints);
+        myCharacter.healthPoints -= currentEnemy.counterAttackPower;
+        $(myCharacter.pageElement + " p").html(myCharacter.healthPoints);
 
-      console.log(`You attacked ${currentEnemy.name} for ${myCharacter.attackPower} damage!`);
+        battleProgressDiv.html(`You attacked ${currentEnemy.name} for ${myCharacter.attackPower} damage!<br>
+        ${currentEnemy.name} attacked you back for ${currentEnemy.counterAttackPower} damage!`);
 
-      console.log(`${currentEnemy.name} attacked you back for ${currentEnemy.counterAttackPower} damage!`);
-
-
-      myCharacter.attackPower += myCharacter.attackIncrease;
+        myCharacter.attackPower += myCharacter.attackIncrease;
+      }
+      
+      if (!enemiesRemaining) {
+        battleProgressDiv.html(`You won! Game Over!`);
+        // Hide attack button and show reset button
+        // $("#attack").css("display", "none");
+        $("#reset").css("display", "block");
+      }
     }
-    
   });
-    
 
-
+  // Reload and reset the game
+  $('#reset').on('click', '#reset-button', function () {
+    location.reload();
+  });
 
 });
