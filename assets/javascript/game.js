@@ -77,6 +77,7 @@ $(document).ready(function () {
   $('#enemies-available').on('click', '.enemy-character',function () {
     // var enemyName = $(this).attr("value");
     if(!isEnemyChosen) {
+      battleProgressDiv.html('');
       var charName = $(this).attr("value");
       $(this).appendTo(yourCharacterDiv);
       characterArray.forEach(function (element) {
@@ -123,7 +124,7 @@ $(document).ready(function () {
       if (!enemiesRemaining) {
         battleProgressDiv.html(`You won! Game Over!`);
         // Hide attack button and show reset button
-        // $("#attack").css("display", "none");
+        $("#attack").css("display", "none");
         $("#reset").css("display", "block");
       }
     }
