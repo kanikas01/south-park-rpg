@@ -22,15 +22,15 @@ var lemmiwinks = {
   healthPoints: 120,
   attackPower: 8,
   attackIncrease: 8,
-  counterAttackPower: 8
+  counterAttackPower: 16
 };
 
 var mrKitty = { 
   name: "Mr. Kitty",
   pageElement: "#mr-kitty",
   healthPoints: 100,
-  attackPower: 5,
-  attackIncrease: 5,
+  attackPower: 15,
+  attackIncrease: 15,
   counterAttackPower: 5
 };
 
@@ -38,18 +38,18 @@ var pete = {
   name: "Pete",
   pageElement: "#pete",
   healthPoints: 150,
-  attackPower: 15,
-  attackIncrease: 15,
-  counterAttackPower: 15
+  attackPower: 6,
+  attackIncrease: 6,
+  counterAttackPower: 13
 };
 
 var towelie = { 
   name: "Towelie",
   pageElement: "#towelie",
   healthPoints: 180,
-  attackPower: 25,
-  attackIncrease: 25,
-  counterAttackPower: 25
+  attackPower: 2,
+  attackIncrease: 2,
+  counterAttackPower: 23
 };
 
 // Add character objects to an array
