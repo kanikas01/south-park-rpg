@@ -1,4 +1,5 @@
-// Declare global variables
+// ---------- Global variables ---------- //
+
 var characterDisplayDiv = $("#character-display");
 var yourCharacterDiv = $("#your-character");
 var enemiesAvailableDiv = $("#enemies-available");
@@ -12,94 +13,67 @@ var enemiesRemaining = 3;
 var myCharacter;
 var currentEnemy;
 
-// Declare character objects
+
+// ---------- Character objects ---------- //
+
 var lemmiwinks = { 
   name: "Lemmiwinks",
   pageElement: "#lemmiwinks",
   healthPoints: 120,
-  attackPower: 12,
-  attackIncrease: 12,
-  counterAttackPower: 12
+  attackPower: 8,
+  attackIncrease: 8,
+  counterAttackPower: 8
 };
 
 var mrKitty = { 
   name: "Mr. Kitty",
   pageElement: "#mr-kitty",
   healthPoints: 100,
-  attackPower: 12,
-  attackIncrease: 12,
-  counterAttackPower: 12
+  attackPower: 5,
+  attackIncrease: 5,
+  counterAttackPower: 5
 };
 
 var pete = { 
   name: "Pete",
   pageElement: "#pete",
   healthPoints: 150,
-  attackPower: 14,
-  attackIncrease: 14,
-  counterAttackPower: 14
+  attackPower: 15,
+  attackIncrease: 15,
+  counterAttackPower: 15
 };
 
 var towelie = { 
   name: "Towelie",
   pageElement: "#towelie",
   healthPoints: 180,
-  attackPower: 16,
-  attackIncrease: 16,
-  counterAttackPower: 16
+  attackPower: 25,
+  attackIncrease: 25,
+  counterAttackPower: 25
 };
 
 // Add character objects to an array
 characterArray.push(lemmiwinks, mrKitty, pete, towelie);
 
+// Gameplay can begin when DOM is loaded
 $(document).ready(function () {
+
+  // ---------- Event listeners ---------- //
   
   // Choose your character and reposition all players
   $(".character").click(chooseHero);
 
-  // Choose defender
+  // Choose opponent
   $('#enemies-available').on('click', '.enemy-character',chooseOpponent);
-
-  $('#attack-button').on('click', function () {
-    if (isHeroChosen && isEnemyChosen) {
-      // You attack the enemy
-      currentEnemy.healthPoints -= myCharacter.attackPower;
-      // You beat the enemy
-      if (currentEnemy.healthPoints <= 0 ) {
-        currentEnemy.healthPoints = 0;
-        enemiesRemaining--;
-        $(currentEnemy.pageElement).detach();
-        // Check if there are still enemies left to fight
-        if (enemiesRemaining) {
-          battleProgressDiv.html(`You have defeated ${currentEnemy.name}!<br>You can choose to fight another enemy.`);
-        } 
-        else {
-          winGame();
-        }
-        isEnemyChosen = false;
-        currentEnemy = '';
-        return;
-      }
-      // If enemy survives, they counterattack
-      else { 
-        $(currentEnemy.pageElement + " p").html(currentEnemy.healthPoints);
-        myCharacter.healthPoints -= currentEnemy.counterAttackPower;
-        $(myCharacter.pageElement + " p").html(myCharacter.healthPoints);
-      }
-      // Check if enemy defeats you
-      if (myCharacter.healthPoints <= 0) {
-        loseGame();
-      }
-      else {
-        battleProgressDiv.html(`You attacked ${currentEnemy.name} for ${myCharacter.attackPower} damage!<br>${currentEnemy.name} attacked you back for ${currentEnemy.counterAttackPower} damage!`);
-      }
-
-      myCharacter.attackPower += myCharacter.attackIncrease;
-    }
-  });
+  
+  // Attack opponent
+  $('#attack-button').on('click', attackOpponent);
 
   // Reload and reset the game
   $('#reset').on('click', '#reset-button', resetGame);
+
+
+  // ---------- Event handlers ---------- //
 
   function chooseHero () {
     if (!isHeroChosen) {
@@ -134,6 +108,56 @@ $(document).ready(function () {
     }
   }
 
+  function attackOpponent () {
+    if (isHeroChosen && isEnemyChosen) {
+      // You attack the enemy
+      currentEnemy.healthPoints -= myCharacter.attackPower;
+      // You beat the enemy
+      if (currentEnemy.healthPoints <= 0) {
+        currentEnemy.healthPoints = 0;
+        enemiesRemaining--;
+        $(currentEnemy.pageElement).detach();
+        // Check if there are still enemies left to fight
+        if (enemiesRemaining) {
+          battleProgressDiv.html(`You have defeated ${currentEnemy.name}!<br>You can choose to fight another enemy.`);
+        }
+        else {
+          winGame();
+        }
+        isEnemyChosen = false;
+        currentEnemy = '';
+        return;
+      }
+      // If enemy survives, they counterattack
+      else {
+        $(currentEnemy.pageElement + " p").html(currentEnemy.healthPoints);
+        myCharacter.healthPoints -= currentEnemy.counterAttackPower;
+        $(myCharacter.pageElement + " p").html(myCharacter.healthPoints);
+      }
+      // Check if enemy defeats you
+      if (myCharacter.healthPoints <= 0) {
+        loseGame();
+      }
+      // If you survive, update page with round info
+      else {
+        battleProgressDiv.html(`You attacked ${currentEnemy.name} for ${myCharacter.attackPower} damage!<br>${currentEnemy.name} attacked you back for ${currentEnemy.counterAttackPower} damage!`);
+      }
+      // Increase your attack power
+      myCharacter.attackPower += myCharacter.attackIncrease;
+    }
+
+    if (!isEnemyChosen) {
+      battleProgressDiv.html("There is no enemy to attack.")
+    }
+  }
+
+  function resetGame() {
+    location.reload();
+  }
+
+
+// ---------- Helper functions ---------- //
+
   function winGame() {
     battleProgressDiv.html(`You won! Game Over!`);
     gameOver();
@@ -150,10 +174,6 @@ $(document).ready(function () {
     // Hide attack button and show reset button
     $("#attack").css("display", "none");
     $("#reset").css("display", "block");
-  }
-
-  function resetGame () {
-    location.reload();
   }
 
 });
