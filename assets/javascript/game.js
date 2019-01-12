@@ -1,62 +1,63 @@
-// ---------- Global variables ---------- //
-
-var characterDisplayDiv = $("#character-display");
-var yourCharacterDiv = $("#your-character");
-var enemiesAvailableDiv = $("#enemies-available");
-var fightSectionDiv = $("#fight-section");
-var defenderDiv = $("#defender");
-var battleProgressDiv = $("#battle-progress p");
-var characterArray = [];
-var isHeroChosen = false;
-var isEnemyChosen = false;
-var enemiesRemaining = 3;
-var myCharacter;
-var currentEnemy;
-
-
-// ---------- Character objects ---------- //
-
-var lemmiwinks = { 
-  name: "Lemmiwinks",
-  pageElement: "#lemmiwinks",
-  healthPoints: 120,
-  attackPower: 8,
-  attackIncrease: 8,
-  counterAttackPower: 16
-};
-
-var mrKitty = { 
-  name: "Mr. Kitty",
-  pageElement: "#mr-kitty",
-  healthPoints: 100,
-  attackPower: 15,
-  attackIncrease: 15,
-  counterAttackPower: 5
-};
-
-var pete = { 
-  name: "Pete",
-  pageElement: "#pete",
-  healthPoints: 150,
-  attackPower: 6,
-  attackIncrease: 6,
-  counterAttackPower: 13
-};
-
-var towelie = { 
-  name: "Towelie",
-  pageElement: "#towelie",
-  healthPoints: 180,
-  attackPower: 2,
-  attackIncrease: 2,
-  counterAttackPower: 23
-};
-
-// Add character objects to an array
-characterArray.push(lemmiwinks, mrKitty, pete, towelie);
-
 // Gameplay can begin when DOM is loaded
 $(document).ready(function () {
+
+  // ---------- Global variables ---------- //
+
+  var characterDisplayDiv = $("#character-display");
+  var yourCharacterDiv = $("#your-character");
+  var enemiesAvailableDiv = $("#enemies-available");
+  var fightSectionDiv = $("#fight-section");
+  var defenderDiv = $("#defender");
+  var battleProgressDiv = $("#battle-progress p");
+  var characterArray = [];
+  var isHeroChosen = false;
+  var isEnemyChosen = false;
+  var enemiesRemaining = 3;
+  var myCharacter;
+  var currentEnemy;
+
+
+  // ---------- Character objects ---------- //
+
+  var lemmiwinks = {
+    name: "Lemmiwinks",
+    pageElement: "#lemmiwinks",
+    healthPoints: 120,
+    attackPower: 8,
+    attackIncrease: 8,
+    counterAttackPower: 16
+  };
+
+  var mrKitty = {
+    name: "Mr. Kitty",
+    pageElement: "#mr-kitty",
+    healthPoints: 100,
+    attackPower: 15,
+    attackIncrease: 15,
+    counterAttackPower: 5
+  };
+
+  var pete = {
+    name: "Pete",
+    pageElement: "#pete",
+    healthPoints: 150,
+    attackPower: 6,
+    attackIncrease: 6,
+    counterAttackPower: 13
+  };
+
+  var towelie = {
+    name: "Towelie",
+    pageElement: "#towelie",
+    healthPoints: 180,
+    attackPower: 2,
+    attackIncrease: 2,
+    counterAttackPower: 23
+  };
+
+  // Add character objects to characterAray
+  characterArray.push(lemmiwinks, mrKitty, pete, towelie);
+
 
   // ---------- Event listeners ---------- //
   
