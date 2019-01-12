@@ -141,7 +141,8 @@ $(document).ready(function () {
       }
       // If you survive, update page with round info
       else {
-        battleProgressDiv.html(`You attacked ${currentEnemy.name} for ${myCharacter.attackPower} damage!<br>${currentEnemy.name} attacked you back for ${currentEnemy.counterAttackPower} damage!`);
+        battleProgressDiv.html(`You attacked ${currentEnemy.name} for ${myCharacter.attackPower} damage!
+          <br>${currentEnemy.name} attacked you back for ${currentEnemy.counterAttackPower} damage!`);
       }
       // Increase your attack power
       myCharacter.attackPower += myCharacter.attackIncrease;
