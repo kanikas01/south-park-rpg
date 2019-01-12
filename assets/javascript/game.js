@@ -160,14 +160,14 @@ $(document).ready(function () {
 // ---------- Helper functions ---------- //
 
   function winGame() {
-    battleProgressDiv.html(`You won! Game Over!`);
+    battleProgressDiv.html(`<h2>You won! Game Over!</h2>`);
     gameOver();
   }
 
   function loseGame () {
     myCharacter.healthPoints = 0;
     $(myCharacter.pageElement + " p").html(myCharacter.healthPoints);
-    battleProgressDiv.html('You have been defeated!');
+    battleProgressDiv.html('<h2>You have been defeated!</h2>');
     gameOver();
   }
 
