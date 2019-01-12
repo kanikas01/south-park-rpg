@@ -55,7 +55,7 @@ $(document).ready(function () {
     counterAttackPower: 23
   };
 
-  // Add character objects to characterAray
+  // Add character objects to characterArray
   characterArray.push(lemmiwinks, mrKitty, pete, towelie);
 
 
