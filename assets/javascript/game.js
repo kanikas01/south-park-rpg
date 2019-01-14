@@ -78,7 +78,7 @@ $(document).ready(function () {
 
   function chooseHero () {
     if (!isHeroChosen) {
-      var charName = $(this).attr("value");
+      var charName = $(this).attr("title");
       $(this).appendTo(yourCharacterDiv);
       characterArray.forEach(function (element) {
         if (element.name !== charName) {
@@ -96,7 +96,7 @@ $(document).ready(function () {
   function chooseOpponent () {
     if (!isEnemyChosen) {
       battleProgressDiv.html('');
-      var charName = $(this).attr("value");
+      var charName = $(this).attr("title");
       $(this).appendTo(yourCharacterDiv);
       characterArray.forEach(function (element) {
         if (element.name == charName) {
