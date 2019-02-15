@@ -30,7 +30,9 @@ body {
   font-weight: normal;
   font-style: normal;
   background-image: url("../images/south-park-background-t-and-p.jpg");
+  background-position: center;
   background-size: cover;
+  background-attachment: fixed;
   margin: 5px;
 }
 
