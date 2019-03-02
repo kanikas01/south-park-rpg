@@ -1,8 +1,6 @@
-# unit-4-game
+# South Park RPG
 
-Browser game utilizing jQuery
-
-[Click here to view deployed project](https://kanikas01.github.io/unit-4-game/)
+[Click here to view deployed project](https://kanikas01.github.io/south-park-rpg/)
 
 This is a very basic RPG using ancillary characters from South Park. All game behavior is controlled from the [game.js](assets/javascript/game.js) file. jQuery is used for all DOM manipulation, and the game code is a combination of vanilla JavaScript and jQuery.
 
